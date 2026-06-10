@@ -284,7 +284,7 @@ function attachCardGestures(card){
   card.addEventListener('pointercancel',()=>{if(drag){drag=false;card.classList.remove('dragging');card.style.transition='transform .3s,opacity .3s';card.style.transform='';card.style.opacity='';clrStamp();}});
 }
 function flipCard(){const m=document.querySelector('.fc.main');if(!m)return;cFlip=!cFlip;m.classList.toggle('flipped',cFlip);}
-function flyOut(m,known){m.dataset.gone='1';m.style.transition='transform .28s cubic-bezier(.4,0,.6,1),opacity .22s';m.style.opacity='0';m.style.transform=`translate3d(${known?'135%':'-135%'},0,0) rotate(${known?'11deg':'-11deg'})`;}
+function flyOut(m,known){m.dataset.gone='1';m.style.transition='transform .42s cubic-bezier(.2,.72,.25,1),opacity .42s linear';m.style.opacity='0.18';m.style.transform=`translate3d(${known?'110vw':'-110vw'},0,0) rotate(${known?'7deg':'-7deg'})`;}
 function saveCardProgress(){const run=()=>{save();updH();};if(window.requestIdleCallback)window.requestIdleCallback(run,{timeout:900});else setTimeout(run,360);}
 function cAns(known){
   const m=document.querySelector('.fc.main');if(!m||m.dataset.gone)return;
@@ -295,7 +295,7 @@ function cAns(known){
   S.cards.seen++;
   flyOut(m,known);
   saveCardProgress();
-  setTimeout(()=>{S.cards.idx++;if(S.cards.idx>=S.cards.pool.length){endCards();return;}showCard();},280);
+  setTimeout(()=>{S.cards.idx++;if(S.cards.idx>=S.cards.pool.length){endCards();return;}showCard();},420);
 }
 function endCards(){
   document.getElementById('cs-active').style.display='none';
